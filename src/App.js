@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import StudentNavbar from "./components/StudentNavbar";
+import Forms from "./components/Forms";
+import Query from "./components/Query";
+import List from "./components/List";
+import StudentService from "./services/StudentService";
+import UpdateStudent from "./components/UpdateStudent";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+export default function App() {
+  const [studentList, setStudentList] = React.useState([]);
+  const [studentIdQuery, setStudentIdQuery] = React.useState(0);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await StudentService.getStudents();
+        setStudentList(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  function updateValue(event) {
+    const { value } = event.target;
+    setStudentIdQuery(value);
+  }
+
+  function updateList(student) {
+    setStudentList((prevStudentList) => {
+      return [...prevStudentList, student];
+    });
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <StudentNavbar />
+      <List students={studentList} />
+      {studentList ? (
+        <Query handleChange={updateValue} studentId={studentIdQuery} />
+      ) : null}
+      <Forms updateList={updateList} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<UpdateStudent />}></Route>
+          <Route path="/editStudent/:id" element={<UpdateStudent />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
-
-export default App;
