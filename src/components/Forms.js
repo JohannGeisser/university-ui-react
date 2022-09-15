@@ -18,13 +18,15 @@ export default function Forms({ updateList }) {
 
   function clearFields() {
     setStudent({
+      id: "",
       firstName: "",
       lastName: "",
     });
   }
 
   function saveStudent(event) {
-    event.preventDefault();
+    //event.preventDefault();
+    window.location.reload(false);
     StudentService.saveStudent(student)
       .then((response) => {
         updateList(student);
