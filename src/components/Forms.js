@@ -26,12 +26,12 @@ export default function Forms({ updateList }) {
 
   function saveStudent(event) {
     //event.preventDefault();
-    window.location.reload(false);
     StudentService.saveStudent(student)
       .then((response) => {
         updateList(student);
         clearFields();
         console.log(response);
+        window.location.reload(false);
       })
       .catch((error) => {
         console.log(error);
@@ -64,10 +64,7 @@ export default function Forms({ updateList }) {
           ></input>
         </div>
         <div className="items-center justify-center h-14 w-full my-4 space-x-4 pt-4">
-          <button
-            onClick={saveStudent}
-            className="rounded text-white font-semibold bg-green-400 hover:bg-green-700 py-2 px-6"
-          >
+          <button onClick={saveStudent} className="rounded">
             Add
           </button>
         </div>

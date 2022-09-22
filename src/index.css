@@ -12,7 +12,7 @@ body {
     display: flex;
     align-items: center;
     height: 65px;
-    background: #6699ff;
+    background: #0964add3;
     color: white;
     padding: 20px;
 }
@@ -46,6 +46,7 @@ body {
   max-width: 300px;
   margin: auto;
   text-align: center;
+  margin-top: 25px;
 }
 
 .title {
@@ -73,4 +74,72 @@ img {
 .upload--button {
   margin-top: 10px;
   margin-bottom: auto;
+}
+
+.buttons {
+  margin-top: 5%;
+  margin-left: 28%;
+  margin-right: 28%;
+  align-items: center;
+}
+
+.main--button {
+  font-size: 22px;
+  padding: 14px 38px;
+  border-radius: 10px;
+  transition-duration: 0.4s;
+  background-color: #0964add3;
+  color: white;
+}
+
+.main--button:hover {
+  background-color: white;
+  color: black;
+}
+
+.modal-footer {
+  align-items: center;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 100px;
+}
+
+.select {
+  max-width: fit-content;
+  max-height: fit-content;
+  font-size: 10px;
+}
+
+.input--search {
+  width: 170px;
+  height: 20px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.button--enroll {
+  margin-bottom: 20px;
+}
+
+.rounded--enroll {
+  margin-left: 10px;
+}
+
+.rounded--back {
+  margin-top: 17px;
+  font-size: 18px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+    background-color: #0964add3;
+    color: white;
+}
+
+.rounded--remove {
+  margin-left: 10px;
+}
+
+.dep--rem {
+  margin-top: 7px;
+  margin-bottom: 7px;
 }
