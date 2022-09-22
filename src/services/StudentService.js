@@ -22,6 +22,14 @@ class StudentService {
   deleteStudent(id) {
     return axios.delete(STUDENT_API_BASE_URL + "/" + id);
   }
+
+  getStudentByCourseId(id) {
+    return axios.get(STUDENT_API_BASE_URL + "/enrollment/" + id);
+  }
+
+  getStudentNotEnrolled(id) {
+    return axios.get(STUDENT_API_BASE_URL + "/noenrollment/" + id);
+  }
 }
 
 export default new StudentService();
