@@ -4,10 +4,12 @@ import Forms from "./Forms";
 import Query from "./Query";
 import List from "./List";
 import StudentService from "../services/StudentService";
+import { useNavigate } from "react-router-dom";
 
 export default function StudentManagement() {
   const [studentList, setStudentList] = React.useState([]);
   const [studentIdQuery, setStudentIdQuery] = React.useState(0);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +42,11 @@ export default function StudentManagement() {
         <Query handleChange={updateValue} studentId={studentIdQuery} />
       ) : null}
       <Forms updateList={updateList} />
+      <div>
+        <button onClick={() => navigate("/")} className="rounded--back">
+          Back
+        </button>
+      </div>
     </>
   );
 }

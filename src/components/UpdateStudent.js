@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import StudentService from "../services/StudentService";
+import StudentNavbar from "./StudentNavbar";
 
 const UpdateStudent = () => {
   const { id } = useParams();
@@ -56,7 +57,7 @@ const UpdateStudent = () => {
     StudentService.deleteStudent(id)
       .then((response) => {
         console.log(response);
-        navigate("/");
+        navigate("/students");
       })
       .catch((error) => {
         console.log(error);
@@ -65,6 +66,7 @@ const UpdateStudent = () => {
 
   return (
     <div>
+      <StudentNavbar />
       <div className="card">
         <img src="../profile.png" alt="John" />
         <h1>{student.firstName + " " + student.lastName}</h1>
@@ -106,7 +108,10 @@ const UpdateStudent = () => {
           </button>
         </p>
         <p>
-          <button className="button--update" onClick={() => navigate("/")}>
+          <button
+            className="button--update"
+            onClick={() => navigate("/students")}
+          >
             Back
           </button>
         </p>
